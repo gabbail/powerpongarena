@@ -8,45 +8,54 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 inputs = Vector2.zero;
     private Rigidbody2D playerRigidbody;
+    private Vector3 startPosition;
 
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+        startPosition = transform.position;
     }
 
     private void Update()
     {
-        if (isPlayer1)
+        if (GameManager.Instance.gameStarted)
         {
-            float vertical = 0f;
-            if (Input.GetKey(KeyCode.W))
+            if (isPlayer1)
             {
-                vertical = 1f;
+                float vertical = 0f;
+                if (Input.GetKey(KeyCode.W))
+                {
+                    vertical = 1f;
+                }
+                else if (Input.GetKey(KeyCode.S))
+                {
+                    vertical = -1f;
+                }
+                inputs = new Vector2(0, vertical);
             }
-            else if (Input.GetKey(KeyCode.S))
+            else
             {
-                vertical = -1f;
+                float vertical = 0f;
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    vertical = 1f;
+                }
+                else if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    vertical = -1f;
+                }
+                inputs = new Vector2(0, vertical);
             }
-            inputs = new Vector2(0, vertical);
         }
-        else
-        {
-            float vertical = 0f;
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                vertical = 1f;
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                vertical = -1f;
-            }
-            inputs = new Vector2(0, vertical);
-        }
-        
     }
 
     private void FixedUpdate()
     {
         playerRigidbody.velocity = new Vector3(0, inputs.y * movementSpeed * Time.fixedDeltaTime, 0);
+    }
+
+    public void Reset()
+    {
+        transform.position = startPosition;
     }
 }
