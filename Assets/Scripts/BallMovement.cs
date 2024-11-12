@@ -16,27 +16,22 @@ public class BallMovement : MonoBehaviour
         ballRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
-    {
-        LaunchBall();
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision != null) 
+        if (collision.gameObject.CompareTag("Paddle"))
         {
-            if (collision.gameObject.CompareTag("Paddle"))
-            {
-                if (speedRushActivated)
-                    IncreaseBallSpeed();
-            }
+            if (speedRushActivated)
+                IncreaseBallSpeed();
         }
     }
 
     void FixedUpdate()
     {
-        direction = ballRigidbody.velocity.normalized;
-        ballRigidbody.velocity = new Vector2(direction.x * currentMovementSpeed, direction.y * currentMovementSpeed);
+        if (GameManager.Instance.gameStarted)
+        {
+            direction = ballRigidbody.velocity.normalized;
+            ballRigidbody.velocity = new Vector2(direction.x * currentMovementSpeed, direction.y * currentMovementSpeed);   
+        }
     }
 
     private void IncreaseBallSpeed()
@@ -44,12 +39,7 @@ public class BallMovement : MonoBehaviour
         currentMovementSpeed = Mathf.Min(currentMovementSpeed * movementSpeedIncreaseFactor, maxMovementSpeed);
     }
 
-    private void OnBecameInvisible()
-    {
-        ResetBall();
-    }
-
-    private void LaunchBall()
+    public void Launch()
     {
         float x = Random.Range(0, 2) == 0 ? 1: -1;
         float y = Random.Range(0, 2) == 0 ? 1: -1;
@@ -58,11 +48,11 @@ public class BallMovement : MonoBehaviour
         currentMovementSpeed = initialMovementSpeed;
     }
 
-    private void ResetBall()
+    public void Reset()
     {
         transform.position = Vector3.zero;
         direction = Vector2.zero;
-        LaunchBall();
+        ballRigidbody.velocity = Vector2.zero;
     }
 
     internal void SetClassicMode()
