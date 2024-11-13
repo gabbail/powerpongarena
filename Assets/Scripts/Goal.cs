@@ -9,9 +9,9 @@ public class Goal : MonoBehaviour
         if (other.gameObject.CompareTag("Ball"))
         {
             if (isBlueSide)
-                GameManager.Instance.BlueSideScored();
-            else
                 GameManager.Instance.RedSideScored();
+            else
+                GameManager.Instance.BlueSideScored();
         }
     }
 }
