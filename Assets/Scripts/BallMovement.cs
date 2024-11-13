@@ -4,7 +4,7 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour
 {
     private float initialMovementSpeed = 12f;
-    private float maxMovementSpeed = 18;
+    private float maxMovementSpeed = 25;
     private float movementSpeedIncreaseFactor = 1.07f;
     private bool speedRushActivated = true;
     private Rigidbody2D ballRigidbody;

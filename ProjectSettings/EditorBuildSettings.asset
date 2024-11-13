@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Classic.unity
     guid: c0061e4496e28454490a3c8726a62100
+  - enabled: 1
+    path: Assets/Scenes/SpeedRush.unity
+    guid: 8426b7bf2ce3fdd4cb4cb4e45ed8ab71
   m_configObjects: {}
