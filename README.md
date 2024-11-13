@@ -10,8 +10,14 @@
 
 ## Getting Started
 
-### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/power-pong-arena.git
+## Download
+To play Power Pong Arena, download the latest version from our [Releases page](https://github.com/gabbail/powerpongarena/releases).
+
+1. Go to the [Releases](https://github.com/gabbail/powerpongarena/releases) section of this repository.
+2. Download the zip file for your platform (e.g., `PowerPongArena_Windows.zip`).
+3. Unzip the file and run the executable to start the game.
+
+## Controls
+- **Player 1**: Use `W` and `S` keys to move the paddle up and down.
+- **Player 2**: Use the `Up` and `Down` arrow keys to control the paddle
