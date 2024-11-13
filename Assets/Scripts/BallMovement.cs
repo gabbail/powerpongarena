@@ -3,13 +3,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BallMovement : MonoBehaviour
 {
-    private float initialMovementSpeed = 8f;
-    private float maxMovementSpeed = 16;
+    private float initialMovementSpeed = 12f;
+    private float maxMovementSpeed = 18;
     private float movementSpeedIncreaseFactor = 1.07f;
     private bool speedRushActivated = true;
     private Rigidbody2D ballRigidbody;
     private Vector2 direction;
     private float currentMovementSpeed;
+
+    [SerializeField] private AudioClip hitSoundClip;
 
     private void Awake()
     {
@@ -23,6 +25,9 @@ public class BallMovement : MonoBehaviour
             if (speedRushActivated)
                 IncreaseBallSpeed();
         }
+
+        if (collision.gameObject.CompareTag("Paddle") || collision.gameObject.CompareTag("Wall"))
+            AudioManager.Instance.PlayOneShot(hitSoundClip);
     }
 
     void FixedUpdate()
