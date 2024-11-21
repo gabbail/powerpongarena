@@ -1,6 +1,6 @@
 # Power Pong Arena
 
-**Power Pong Arena** is an exciting twist on the classic Pong game, developed in Unity with full controller support. It brings new energy to Pong with two game modes, classic and speedrush.
+**Power Pong Arena** is an exciting twist on the classic Pong game, developed in Unity. It brings new energy to Pong with two game modes, classic and speedrush.
 
 ## Features
 
